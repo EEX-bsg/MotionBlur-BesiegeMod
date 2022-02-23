@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B9B39921-2A44-4F98-AFE7-DACCB1645A4E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MotionEffectScript</RootNamespace>
+    <AssemblyName>MotionEffect</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile>Unity Full v3.5</TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Assembly-CSharp">
+      <HintPath>$(BESIEGE_GAME_ASSEMBLIES)Assembly-CSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="DynamicText">
+      <HintPath>$(BESIEGE_GAME_ASSEMBLIES)DynamicText.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UnityEngine">
+      <HintPath>$(BESIEGE_UNITY_ASSEMBLIES)UnityEngine.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AmplifyMotion\AmplifyMotionBase.cs" />
+    <Compile Include="AmplifyMotion\AmplifyMotionCamera.cs" />
+    <Compile Include="AmplifyMotion\AmplifyMotionEffect.cs" />
+    <Compile Include="AmplifyMotion\AmplifyMotionObject.cs" />
+    <Compile Include="AmplifyMotion\AmplifyMotionObjectBase.cs" />
+    <Compile Include="AmplifyMotion\AmplifyMotionPostProcess.cs" />
+    <Compile Include="AmplifyMotion\ClothState.cs" />
+    <Compile Include="AmplifyMotion\ParticleState.cs" />
+    <Compile Include="AmplifyMotion\Runtime\VersionInfo.cs" />
+    <Compile Include="AmplifyMotion\SkinnedState.cs" />
+    <Compile Include="AmplifyMotion\SolidState.cs" />
+    <Compile Include="AmplifyMotion\WorkerThreadPool.cs" />
+    <Compile Include="Mod.cs" />
+    <Compile Include="MotionEffectModCore.cs" />
+    <Compile Include="MotionEffectModGUI.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="AmplifyMotion\AmplifyMotionBase.cs.meta" />
+    <None Include="AmplifyMotion\AmplifyMotionCamera.cs.meta" />
+    <None Include="AmplifyMotion\AmplifyMotionEffect.cs.meta" />
+    <None Include="AmplifyMotion\AmplifyMotionObject.cs.meta" />
+    <None Include="AmplifyMotion\AmplifyMotionObjectBase.cs.meta" />
+    <None Include="AmplifyMotion\AmplifyMotionPostProcess.cs.meta" />
+    <None Include="AmplifyMotion\ClothState.cs.meta" />
+    <None Include="AmplifyMotion\Editor.meta" />
+    <None Include="AmplifyMotion\ParticleState.cs.meta" />
+    <None Include="AmplifyMotion\Runtime.meta" />
+    <None Include="AmplifyMotion\Runtime\VersionInfo.cs.meta" />
+    <None Include="AmplifyMotion\SkinnedState.cs.meta" />
+    <None Include="AmplifyMotion\SolidState.cs.meta" />
+    <None Include="AmplifyMotion\WorkerThreadPool.cs.meta" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>copy "$(TargetPath)" "$(ProjectDir)..\..\MotionBlur\$(TargetFileName)"</PostBuildEvent>
+  </PropertyGroup>
+</Project>
