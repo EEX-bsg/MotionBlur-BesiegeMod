@@ -2,7 +2,6 @@
 using System.Collections;
 using Modding;
 using UnityEngine;
-using MotionEffectScript;
 using UnityEngine.SceneManagement;
 
 namespace MotionEffectScript
@@ -47,9 +46,9 @@ namespace MotionEffectScript
         void Awake()
         {
             StartCoroutine(CheckVersion());
-            SceneManager.activeSceneChanged += OnSceneChaneged;//シーンチェンジイベントに追加
             LoadAssetBundle();
-            if(SceneManager.GetActiveScene().buildIndex == 9)//マルチプレイヤーシーン対策(シーンチェンジ後にmod起動される為)
+            SceneManager.activeSceneChanged += OnSceneChaneged;//シーンチェンジイベントに追加
+            if(StatMaster.isMP)//マルチプレイヤーシーン対策(シーンチェンジ後にmod起動される為)
             {
                 OnSceneChaneged(SceneManager.GetActiveScene(), SceneManager.GetActiveScene());
             }
@@ -71,19 +70,25 @@ namespace MotionEffectScript
         }
         private void OnSceneChaneged(Scene arg0, Scene arg1)
         {
-            if(SceneManager.GetActiveScene().buildIndex >= 6 && SceneManager.GetActiveScene().buildIndex != 64)
+            string sceneName = SceneManager.GetActiveScene().name;
+            if(!(sceneName is
+                "MasterSceneMultiplayer" // mv or level editor
+                or "BARREN EXPANSE" or "SANDBOX" or "MISTY MOUNTAIN" or "WATER SANDBOX" or "LEGACY SANDBOX" // sandboxes
+                or "5vpjvHZZpwjxpxZp5" //the hidden level
+            ) && !int.TryParse(sceneName, out _) //campaign Levels
+            ){
+                return;
+            }
+            mainCamera = Camera.main.gameObject;//メインカメラ取得
+            if(mainCamera.GetComponent<AmplifyMotionEffectBase>() == null)
             {
-                mainCamera = Camera.main.gameObject;//メインカメラ取得
-                if(mainCamera.GetComponent<AmplifyMotionEffectBase>() == null)
-                {
-                    mainCamera.AddComponent<AmplifyMotionEffectBase>();//メインカメラにモーションエフェクトを適用
-                }
+                mainCamera.AddComponent<AmplifyMotionEffectBase>();//メインカメラにモーションエフェクトを適用
             }
         }
 		private IEnumerator CheckVersion()//コンソールウィンドウへのmodバージョン表示用
-         {
-             yield return new WaitForSeconds(1f);
-             Debug.Log("MotionEffectMod(MotionBlur) Version :" + Mods.GetVersion(new Guid("8bbf03ed-9050-4466-8974-18a6b62a26f4")));
-         }
+        {
+            yield return new WaitForSeconds(1f);
+            Debug.Log("MotionEffectMod(MotionBlur) Version :" + Mods.GetVersion(new Guid("8bbf03ed-9050-4466-8974-18a6b62a26f4")));
+        }
     }
 }

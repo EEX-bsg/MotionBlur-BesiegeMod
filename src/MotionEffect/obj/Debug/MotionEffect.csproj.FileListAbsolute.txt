@@ -22,3 +22,4 @@ D:\steam\steamapps\common\Besiege\Besiege_Data\Mods\MotionBlur Project\src\Motio
 D:\steam\steamapps\common\Besiege\Besiege_Data\Mods\MotionBlur Project\src\MotionEffect\obj\Debug\MotionEffect.csproj.CopyComplete
 D:\steam\steamapps\common\Besiege\Besiege_Data\Mods\MotionBlur Project\src\MotionEffect\obj\Debug\MotionEffect.dll
 D:\steam\steamapps\common\Besiege\Besiege_Data\Mods\MotionBlur Project\src\MotionEffect\obj\Debug\MotionEffect.pdb
+D:\steam\steamapps\common\Besiege\Besiege_Data\Mods\MotionBlur Project\src\MotionEffect\bin\Debug\UnityEngine.xml
