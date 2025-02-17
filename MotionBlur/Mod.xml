@@ -1,7 +1,7 @@
 <Mod>
 	<Name>MotionBlur</Name>
 	<Author>EEX</Author> 
-	<Version>1.0.0</Version>
+	<Version>1.0.1</Version>
 	
 	<Description>
 Add motion blur to the camera.
@@ -13,21 +13,6 @@ Add motion blur to the camera.
 	<Assemblies>
 		<Assembly path="MotionEffect.dll" />
 	</Assemblies>
-
-	<Blocks>
-	</Blocks>
-
-	<Entities>
-	</Entities>
-
-	<Triggers>
-	</Triggers>
-
-	<Events>
-	</Events>
-
-	<Keys>
-	</Keys>
 
 	<Resources>
 		<Texture name="icon" path="icon.png" />
